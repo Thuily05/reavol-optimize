@@ -32,7 +32,7 @@ export default function DashboardLayout(
           {/*Place children where you want to render a page or nested layout */}
           <div className='flex flex-row'>
             <SideBar />
-            <div className="flex flex-col flex-1 p-10">
+            <div className="flex flex-1 flex-col sm:p-5 lg:p-7.5 2xl:p-10">
               <Header />
               <main>{children}</main>
             </div>

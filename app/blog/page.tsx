@@ -32,7 +32,7 @@ export default function Blog() {
                                     src={list[0].media.originUrl}
                                     className='w-full object-cover 
                        transition-all duration-500 ease-in-out 
-                       hover:scale-110'
+                       hover:scale-120'
                                 />
                             </Link>
 

@@ -17,18 +17,22 @@ export default function SideBar() {
         { id: 7, title: "Blog sách của tôi", path: '/blog', icon: <TbMessageChatbotFilled /> },
     ]
     return (
-        <div className="pl-10 pr-10 pt-10 flex flex-col w-fit text-[#808191] min-w-max" >
+        <div className="
+        sm: pl-5 sm:pr-5 sm:pt-5
+        lg:pl-7.5 lg:pr-7.5 lg:pt-7.5 
+        2xl:pl-10 2xl:pr-10 2xl:pt-10 
+        flex flex-col w-fit text-[#808191] min-w-max" >
             <img src='pics/footer/footer_reavol.svg'
-                className="w-auto h-auto max-w-full max-h-full" />
-            <div className='border-b-2 border-dashed pr-15 pb-10 pt-10'>
-                <div className='font-medium text-sm pb-10 '>MENU</div>
+                className="lg:h-15 2xl:h-22.5 w-auto" />
+            <div className='sm:border-b 2xl:border-b-2 border-dashed pb-10 pt-10 lg:pr-10 2xl:pr-15'>
+                <div className='font-semibold lg:text-[11px] 2xl:text-sm pb-10 '>MENU</div>
                 < div className="flex flex-col gap-5" >
                     {
                         menu.slice(0, 6).map((item) => (
                             <Link href={item.path} key={item.id} className='group'>
-                                <div className='sidebarItem flex flex-row gap-5 text-base '>
-                                    <div className='text-white bg-[#1c465d] flex items-center justify-center p-2 rounded-lg group-hover:bg-[#28a745]'>{item.icon}</div>
-                                    <div className="font-semibold font-sans flex items-center hover:text-white group-hover:font-bold ">{item.title}</div>
+                                <div className='flex flex-row items-center gap-5 group '>
+                                    <div className='text-white bg-[#1c465d] p-2 rounded-lg group-hover:bg-[#28a745]'>{item.icon}</div>
+                                    <div className="font-semibold hover:text-white group-hover:font-bold">{item.title}</div>
                                 </div>
                             </Link>
                         ))
@@ -36,7 +40,7 @@ export default function SideBar() {
                 </div>
             </div>
 
-            <div className='border-b-2 border-dashed pr-15 pb-10 pt-10'>
+            <div className='sm:border-b 2xl:border-b-2 border-dashed pb-10 pt-10 lg:pr-10 2xl:pr-15'>
                 < div className='font-medium text-sm pb-10' >BLOG SÁCH</div >
                 <Link href={menu[6].path} className='group'>
                     <div className='sidebarItem flex flex-row gap-5 text-[#808191]'>

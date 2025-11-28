@@ -1,6 +1,7 @@
 'use client'
 import { useHomeDataQuery } from '@/context-local/rtkData';
-import { bookColBlockItem, randomImg } from '@/component/children/bookItem'
+import { imgRandom } from '@/component/children/img';
+import { bookColBlockItem } from '@/component/children/bookItem'
 import { BlogItem } from '@/utils/interface'
 import { getRandom } from '@/utils/utilFn';
 export default function Collection() {
@@ -15,9 +16,9 @@ export default function Collection() {
             <div>
                 <div className='text-[30px] text-white font-bold pt-10'>TUYỂN TẬP</div>
                 <div className='pt-10'>
-                    {randomImg(randomItem[0])}
+                    {imgRandom(randomItem[0])}
                 </div>
-                <div className="introBlock grid grid-cols-2 gap-5 pt-10">
+                <div className="grid grid-cols-2 gap-5 pt-10">
                     {list.map((item: BlogItem) => (
                         bookColBlockItem(item)
                     ))}

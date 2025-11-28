@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { BlogItem, RelatedItem } from '@/utils/interface'
 import Button from './button'
-import FifteenMin from './fifteenmin';
+import { DescriptionText, AuthorText, BookTitleText, MinutesText, MinutesTextTop, TimeText } from './text'
+import { imgScale } from './img';
 
 //book o row block home
 export function bookRowBlockItem(item: BlogItem) {
@@ -12,16 +13,14 @@ export function bookRowBlockItem(item: BlogItem) {
                 pathname: `/book/${item.slug}`,
                 query: { id: item.id }
             }} >
-                <div className='overflow-hidden h-50 rounded-t-xl'>
-                    <img src={item.media.originUrl}
-                        className='object-cover h-full w-full
-                                            hover:scale-110 transition-all  ' />
+                <div className='lg:h-40 2xl:h-50 overflow-hidden rounded-t-xl relative'>
+                    {imgScale(item.media.originUrl)}
+                    <MinutesTextTop />
                 </div>
-                <div className='p-5 h-60 text-justify flex flex-col gap-2.5'>
-                    <div className='text-[#b7b9d2] text-[14px]'>{item.author}</div>
-                    <div className='text-[18px] line-clamp-2 text-white'><b>{item.title}</b></div>
-                    <div className='text-[#b7b9d2] text-[14px] line-clamp-3'>{item.subTitle}</div>
-                    <div className=' text-[#808191] mt-auto text-[12px]'>53K views • {yearsAgo} years ago</div>
+                <div className='h-fit p-5 flex flex-col gap-2.5'>
+                    {BookTitleText(item.title)}
+                    {DescriptionText(item.subTitle)}
+                    {TimeText(`53K views • ${yearsAgo} years ago`)}
                 </div>
 
             </Link>
@@ -40,15 +39,13 @@ export function bookColBlockItem(item: BlogItem) {
             className='flex flex-row gap-5'
             key={item.id}
         >
-            <div className='flex-1 aspect-square rounded-2xl overflow-hidden'>
-                <img src={item.media.originUrl}
-                    className='object-cover h-full w-full hover:scale-125
-                            transition-all duration-500 ease-in-out' />
+            <div className='md:w-15 md:h-15 2xl:w-20 2xl:h-20 rounded-2xl overflow-hidden'>
+                {imgScale(item.media.originUrl)}
             </div>
-            <div className='text-white items-center flex flex-row w-[85%] pb-5 pr-5 pt-5  border-b border-solid border-[#1e475a]'>
+            <div className='items-center flex flex-row flex-1 md:pb-2.5 md:pt-2.5 2xl:pb-5 2xl:pt-5 pr-5  border-b border-solid border-[#1e475a]'>
                 <div>
-                    <div className='text-[16px]'><b>{item.title}</b></div>
-                    <div className='text-[14px]'>{item.author}</div>
+                    {BookTitleText(item.title)}
+                    {AuthorText(item.author)}
                 </div>
                 <Button />
             </div>
@@ -64,15 +61,13 @@ export function bookSelectionItem(item: BlogItem) {
                 pathname: `/book/${item.slug}`,
                 query: { id: item.id }
             }} >
-                <div className='overflow-hidden h-80 rounded-xl'>
-                    <img src={item.image.originUrl}
-                        className='object-cover h-full w-full
-                                    hover:scale-125 transition-all duration-500 ease-in-out  ' />
+                <div className='overflow-hidden sm:h-60 lg:h-80 rounded-xl'>
+                    {imgScale(item.image.originUrl)}
                 </div>
-                <div className='p-5 h-fit text-justify flex flex-col gap-2.5'>
-                    <div className='text-[#b7b9d2] text-[14px]'>{item.description}</div>
-                    <div className='text-[18px] text-white line-clamp-1'><b>{item.name}</b></div>
-                    <div className='text-[#b7b9d2] text-[14px] line-clamp-3'>{item.numArticle} chủ đề</div>
+                <div className='md:p-2.5 2xl:p-5 h-fit text-justify flex flex-col gap-2.5'>
+                    {DescriptionText(item.name)}
+                    {BookTitleText(item.description)}
+                    {DescriptionText(`${item.numArticle} chủ đề`)}
 
                 </div>
 
@@ -90,14 +85,13 @@ export function bookSelectionItem1(item: BlogItem) {
                 query: { id: item.id }
             }} >
                 <div className='overflow-hidden h-100 rounded-xl'>
-                    <img src={item.image.originUrl}
-                        className='object-cover h-full w-full
-                                    hover:scale-125 transition-all duration-500 ease-in-out  ' />
+                    {imgScale(item.image.originUrl)}
                 </div>
                 <div className='p-5 h-fit text-justify flex flex-col gap-2.5'>
-                    <div className='text-[18px] text-white'><b>{item.name}</b></div>
-                    <div className='text-[#b7b9d2] text-[14px] line-clamp-1'>{item.description}</div>
-                    <div className='text-white text-[14px] line-clamp-3 mt-auto'>{item.numArticle} chủ đề</div>
+                    {BookTitleText(item.name)}
+                    {DescriptionText(item.description)}
+                    {DescriptionText(`${item.numArticle} chủ đề`)}
+
                 </div>
 
             </Link>
@@ -115,14 +109,12 @@ export function bookTrendingItem(item: BlogItem) {
                 query: { id: item.id }
             }} >
                 <div className='overflow-hidden h-50 rounded-t-xl'>
-                    <img src={item.media.originUrl}
-                        className='object-cover h-full w-full
-                                            hover:scale-125 transition-all  ' />
+                    {imgScale(item.media.originUrl)}
                 </div>
                 <div className='p-5 h-50 text-justify flex flex-col gap-2.5 justify-center'>
-                    <div className='text-[18px] line-clamp-2 text-white'><b>{item.title}</b></div>
-                    <div className='text-[#b7b9d2] text-[14px] line-clamp-2'>{item.subTitle}</div>
-                    <div className=' text-[#808191] text-[12px]'>53K views • {yearsAgo} years ago</div>
+                    {BookTitleText(item.title)}
+                    {DescriptionText(item.subTitle)}
+                    {TimeText(`53K views • ${yearsAgo} years ago`)}
                 </div>
 
             </Link>
@@ -135,32 +127,20 @@ export function bookBlogItem(item: BlogItem) {
     return (<div className=' rounded-xl' key={item.id}>
         <Link href={`/detailblog/` + item.slug} >
             <div className='overflow-hidden h-80 rounded-xl'>
-                <img src={item.media.originUrl}
-                    className='object-cover h-full w-full
-                    hover:scale-125 transition-all duration-500 ease-in-out  ' />
+                {imgScale(item.media.originUrl)}
             </div>
-            <div className='p-5 h-fit text-justify flex flex-col gap-2.5'>
-                <div className='text-[18px] text-white line-clamp-1'><b>{item.title}</b></div>
+            <div className='sm:p-2.5 lg:p-5 h-fit text-justify flex flex-col gap-2.5'>
+                {BookTitleText(item.title)}
                 <div className='text-[#b7b9d2] text-[14px] line-clamp-3'
                     dangerouslySetInnerHTML={{
                         __html: item.description.replace(/\n/g, '<br />')
                     }} />
-
             </div>
 
         </Link>
     </div>)
 }
 
-//anh random 50vh
-export function randomImg(item: BlogItem) {
-    return (
-        <div className='rounded-2xl pt-5 w-full h-[50vh] overflow-hidden' >
-            <img src={item.thumbUrl}
-                className='w-full object-cover rounded-t-2xl' />
-        </div>
-    )
-}
 
 //related book
 //bookTrending
@@ -173,15 +153,13 @@ export function bookRelatedItem(item: RelatedItem) {
                 query: { id: item.id }
             }} >
                 <div className='relative overflow-hidden h-100 rounded-t-xl'>
-                    <img src={item.media.originUrl}
-                        className='object-cover h-full w-full
-                        hover:scale-125 transition-all  ' />
-                    <FifteenMin />
+                    {imgScale(item.media.originUrl)}
+                    <MinutesText />
                 </div>
                 <div className='p-10 h-fit text-justify flex flex-col gap-2.5 justify-center'>
-                    <div className='text-[18px] line-clamp-2 text-white'><b>{item.title}</b></div>
-                    <div className='text-[#b7b9d2] text-[14px] line-clamp-2'>{item.subTitle}</div>
-                    <div className=' text-[#808191] text-[12px]'>53K views • {yearsAgo} years ago</div>
+                    {BookTitleText(item.title)}
+                    {DescriptionText(item.subTitle)}
+                    {TimeText(`53K views • ${yearsAgo} years ago`)}
                 </div>
 
             </Link>

@@ -2,6 +2,8 @@
 import { BlogItem } from '@/utils/interface'
 import { bookSelectionItem1 } from '@/component/children/bookItem'
 import { useHomeDataQuery } from '@/context-local/rtkData'
+import { TitlePage, SmallTitlePage } from '@/component/children/text'
+
 
 export default function Selection() {
     const { data, isLoading, isError, isSuccess } = useHomeDataQuery()
@@ -12,8 +14,8 @@ export default function Selection() {
         const list = data.data[5].selections;
         return (
             <div>
-                <div className='text-white pt-10 font-semibold text-[28px]'>Tuyển chọn</div>
-                <div className='text-white font-semibold text-[40px]'>Đọc sách mọi lúc mọi nơi</div>
+                {SmallTitlePage('Tuyển chọn')}
+                {TitlePage('Đọc sách mọi lúc mọi nơi')}
                 <div className="grid grid-cols-2 gap-7.5 pt-10">
                     {
                         list.map((item: BlogItem) => (
