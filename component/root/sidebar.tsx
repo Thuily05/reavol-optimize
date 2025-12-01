@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link'
 import { GoHomeFill } from "react-icons/go";
 import { IoExtensionPuzzleSharp } from "react-icons/io5";
@@ -6,7 +7,14 @@ import { IoBook } from "react-icons/io5";
 import { PiFireSimpleFill } from "react-icons/pi";
 import { TbMessageChatbotFilled } from "react-icons/tb";
 import { FaRankingStar } from "react-icons/fa6";
+import { click } from '@/context-local/slices/buttonSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@/context-local/store'
+
 export default function SideBar() {
+    const buttonStatus = useSelector((state: RootState) => state.button)
+    const dispatch = useDispatch()
+
     const menu = [
         { id: 1, title: "Khám phá", path: "/", icon: <GoHomeFill /> },
         { id: 2, title: "Giới thiệu Reavol", path: '/introduce', icon: <IoExtensionPuzzleSharp /> },
@@ -28,15 +36,33 @@ export default function SideBar() {
                 <div className='font-semibold lg:text-[11px] 2xl:text-sm pb-10 '>MENU</div>
                 < div className="flex flex-col gap-5" >
                     {
-                        menu.slice(0, 6).map((item) => (
-                            <Link href={item.path} key={item.id} className='group'>
-                                <div className='flex flex-row items-center gap-5 group '>
-                                    <div className='text-white bg-[#1c465d] p-2 rounded-lg group-hover:bg-[#28a745]'>{item.icon}</div>
-                                    <div className="font-semibold hover:text-white group-hover:font-bold">{item.title}</div>
-                                </div>
-                            </Link>
-                        ))
+                        menu.slice(0, 6).map((item) => {
+                            // Lấy trạng thái của từng icon, mặc định false
+                            const isActive = buttonStatus[item.id] ?? false
+
+                            // className theo trạng thái từng icon
+                            const classNameIcon = isActive
+                                ? 'text-white bg-[#28a745] p-2 rounded-lg'
+                                : 'text-white bg-[#1c465d] p-2 rounded-lg'
+
+                            const classNameText = isActive
+                                ? 'text-white font-bold'
+                                : 'font-semibold'
+
+                            return (
+                                <Link href={item.path} key={item.id} className='group'>
+                                    <div
+                                        className='flex flex-row items-center gap-5 group cursor-pointer'
+                                        onClick={() => dispatch(click(item.id))}
+                                    >
+                                        <div className={classNameIcon}>{item.icon}</div>
+                                        <div className={classNameText}>{item.title}</div>
+                                    </div>
+                                </Link>
+                            )
+                        })
                     }
+
                 </div>
             </div>
 

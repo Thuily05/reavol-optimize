@@ -1,3 +1,4 @@
+'use client'
 import { FaBell } from "react-icons/fa6";
 import { FaUnlockAlt } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";

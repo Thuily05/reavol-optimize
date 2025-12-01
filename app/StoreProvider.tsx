@@ -6,12 +6,9 @@ import { Provider } from 'react-redux'
 import { makeStore, AppStore } from '../context-local/store'
 
 //store provider nhận 2 props 
-//count: số ban đầu để khởi tạo counter slice, children: các component con được bọc bởi Provider
 export default function StoreProvider({
-    count,
     children
 }: {
-    count: number,
     children: React.ReactNode
 }) {
 

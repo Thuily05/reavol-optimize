@@ -4,8 +4,6 @@ import { BlogItem } from '@/utils/interface'
 import Button from '@/component/children/button'
 import { useBlogQuery } from '@/context-local/rtkData'
 
-
-
 export default function Blog() {
     const { data, isLoading, isSuccess, isError } = useBlogQuery();
     if (isLoading) return 'loading...'

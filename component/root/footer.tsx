@@ -1,4 +1,4 @@
-
+'use client'
 import Image from 'next/image'
 import logo from '@/public/pics/footer/footer_reavol.svg'
 import facebook from '@/public/pics/footer/ic_facebook.svg'

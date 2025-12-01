@@ -1,5 +1,6 @@
-
 import { configureStore } from '@reduxjs/toolkit'
+import buttonReducer from './slices/buttonSlice'
+import { api } from './rtkData'
 
 export const makeStore = () => {
     //makestore là 1 function trả về redux store mới. 
@@ -7,7 +8,11 @@ export const makeStore = () => {
     return configureStore(
         {
             reducer: {
-            }
+                button: buttonReducer,
+                [api.reducerPath]: api.reducer,
+            },
+            middleware: (getDefaultMiddleware) =>
+                getDefaultMiddleware().concat(api.middleware)
         }
     )
 }

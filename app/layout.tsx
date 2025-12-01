@@ -12,6 +12,8 @@ import SideBar from '@/component/root/sidebar'
 import Header from '@/component/root/header'
 import { ApiProvider } from '@reduxjs/toolkit/query/react'
 import { api } from '@/context-local/rtkData'
+import { makeStore } from '@/context-local/store'
+import StoreProvider from "./StoreProvider";
 
 // export const metadata = {
 //   title: "REAVOL",
@@ -22,7 +24,8 @@ export default function DashboardLayout(
   { children }: { children: React.ReactNode }
 ) {
   return (
-    <ApiProvider api={api}>
+
+    <StoreProvider>
       <html lang='en'>
         <head>
           <link rel="shortcut icon" href="/favicon.png" type="image/x-icon"></link>
@@ -40,7 +43,7 @@ export default function DashboardLayout(
           <Footer />
         </body>
       </html>
-    </ApiProvider>
+    </StoreProvider>
   )
 }
 //the layout above được gọi là root layout vì nó được defined at the root of the app directory.
