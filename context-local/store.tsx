@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import buttonReducer from './slices/buttonSlice'
+import bookReducer from './slices/bookSlice'
 import { api } from './rtkData'
 
 export const makeStore = () => {
@@ -9,6 +10,7 @@ export const makeStore = () => {
         {
             reducer: {
                 button: buttonReducer,
+                book: bookReducer,
                 [api.reducerPath]: api.reducer,
             },
             middleware: (getDefaultMiddleware) =>

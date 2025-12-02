@@ -1,4 +1,5 @@
 //for client render api
+//sử dụng RTK query để tối ưu performance
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 //trả về file json

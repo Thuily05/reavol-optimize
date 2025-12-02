@@ -1,3 +1,11 @@
+export interface BookData {
+    data: Array<Record<string, any>> //object voi key la string, value bat ki
+    message: string
+}
+export interface BlogData {
+    data: Record<string, any>
+    message: string
+}
 export interface BlogItem {
     id: string | number;
     thumbUrl: string;
