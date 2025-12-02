@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
 import buttonReducer from './slices/buttonSlice'
 import bookReducer from './slices/bookSlice'
+import { homeReducer } from './home'
+import { blogReducer } from './blog'
 import { api } from './rtkData'
 
 export const makeStore = () => {
@@ -9,6 +11,8 @@ export const makeStore = () => {
     return configureStore(
         {
             reducer: {
+                home: homeReducer,
+                blog: blogReducer,
                 button: buttonReducer,
                 book: bookReducer,
                 [api.reducerPath]: api.reducer,

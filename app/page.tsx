@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link'
-import { fetchHomeData, fetchBlogData } from '@/context-local/slices/bookSlice';
+import { fetchBlogData, blogSelector } from '@/context-local/blog';
+import { fetchHomeData, homeSelector } from '@/context-local/home';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '@/context-local/store'
@@ -17,11 +18,12 @@ export default function Home() {
     dispatch(fetchHomeData())
     dispatch(fetchBlogData())
   }, [])
-  const { loadingBlogData, loadingHomeData, homeData, blogData } = useSelector((state: RootState) => state.book)
-
-
-  //state.book laf lay ra thong tin toan bo state cua book, destructuring -> lay ra het cac file cua state
-
+  //useSelector lấy ra state trong store, truyền state vào hàm tham số của nó
+  //hàm tham số return state.book
+  //const { loadingBlogData, blogData } = useSelector((state: RootState) => state.book)
+  //hàm tham số returm HomeSelector(state) -> return state.home
+  const { loading: loadingHomeData, data: homeData } = useSelector((state: RootState) => homeSelector(state))
+  const { loading: loadingBlogData, data: blogData } = useSelector((state: RootState) => blogSelector(state))
 
   if (loadingBlogData || loadingHomeData) return 'loading...'
   if (!loadingBlogData && !loadingHomeData) {

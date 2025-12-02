@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/context-local/store'
 
 export default function SideBar() {
+    //trả về buttonStatus = toàn bộ state của (slice button)
     const buttonStatus = useSelector((state: RootState) => state.button)
     const dispatch = useDispatch()
 
