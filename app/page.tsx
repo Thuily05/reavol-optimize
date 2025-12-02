@@ -15,7 +15,7 @@ export default function Home() {
   const dispatch = useDispatch<AppDispatch>()
   useEffect(() => {
     console.log('Server re-render')
-    dispatch(fetchHomeData())
+    dispatch(fetchHomeData({ page: 0, unlock: false }))
     dispatch(fetchBlogData())
   }, [])
   //useSelector lấy ra state trong store, truyền state vào hàm tham số của nó

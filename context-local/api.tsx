@@ -3,7 +3,7 @@ export const API = {
     detailBlog: "https://api.reavol.vn/api/v1/blog/detail/",
     detailBook: 'https://api.reavol.vn/api/v1/article/get-detail-article?articleId=',
     relatedBook: 'https://api.reavol.vn/api/v1/article/get-related-article?articleId=',
-    homeData: 'https://api.reavol.vn/api/v1/home/get-home-data?page=0&unLock=false',
+    homeData: 'https://api.reavol.vn/api/v1/home/get-home-data',
     blogData: 'https://api.reavol.vn/api/v1/blog/get-blog-for-web'
 }
 export async function getDetailBook(articleId: number | string) {

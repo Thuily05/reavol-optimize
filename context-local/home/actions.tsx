@@ -32,7 +32,9 @@ builder.addCase(increment, (state, action)=> state -= action.payload)
 import { API } from '@/context-local/api'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-export const fetchHomeData = createAsyncThunk('home/fetchData', async () => {
-    const respone = await fetch(API.homeData)
+//page=0 unlock=false
+export const fetchHomeData = createAsyncThunk('home/fetchData', async (req: Record<string, any>) => {
+    const { page, unlock } = req
+    const respone = await fetch(`${API.homeData}?page=${page}&unlock=${unlock}`)
     return (await respone.json()) //trả về object {data: Array(11), message: 'success'}
 })
